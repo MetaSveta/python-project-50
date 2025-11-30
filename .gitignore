@@ -1,0 +1,63 @@
+# -------------------------
+# OS / macOS
+# -------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+
+# Virtual envs
+.venv/
+env/
+venv/
+
+# pyenv
+.python-version
+
+# -------------------------
+# uv (managed environments)
+# -------------------------
+uv.lock
+
+# -------------------------
+# Project build outputs
+# -------------------------
+build/
+dist/
+*.egg-info/
+
+# -------------------------
+# Coverage
+# -------------------------
+.coverage
+coverage.xml
+*_cache/
+
+# -------------------------
+# IDE / Editors
+# -------------------------
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+
+# -------------------------
+# Temp
+# -------------------------
+*.tmp
+*.swp
