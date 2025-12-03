@@ -1,2 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/MetaSveta/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/MetaSveta/python-project-50/actions)
+
+## Demonstrations
+
+[![asciicast](https://asciinema.org/a/3AFaXVRuCouHIBImqcZkGOVyt.svg)](https://asciinema.org/a/3AFaXVRuCouHIBImqcZkGOVyt)
