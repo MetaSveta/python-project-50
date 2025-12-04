@@ -1,0 +1,23 @@
+# General settings
+line-length = 88
+target-version = "py313"
+
+[lint]
+# Enable new/experimental Ruff rules
+preview = true
+
+# Enabled rule groups
+select = [
+    "E",   # style errors (PEP8-like issues)
+    "F",   # logical errors / pyflakes checks
+    "I",   # import sorting
+    "UP",  # modern Python / pyupgrade checks
+    "C90", # cyclomatic complexity (mccabe)
+]
+
+# Global ignores can be added here if needed
+# ignore = []
+
+[lint.per-file-ignores]
+  # __init__.py often contains unused imports for package API exports
+"__init__.py" = ["F401"]

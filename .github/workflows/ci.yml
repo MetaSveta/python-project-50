@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Sync dependencies
+        run: uv sync
+
+      - name: Run linters
+        run: make lint
+
+      - name: Run tests with coverage
+        run: make test-coverage
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=MetaSveta_python-project-50
+            -Dsonar.organization=meta-5sveta
+            -Dsonar.python.coverage.reportPaths=coverage.xml
