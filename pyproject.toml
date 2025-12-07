@@ -28,3 +28,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["gendiff"]
+
+[tool.coverage.run]
+source = ["gendiff"]
+relative_files = true
