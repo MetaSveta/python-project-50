@@ -1,14 +1,12 @@
-import json
+from .parsers import parse
 
 
 def generate_diff(file_path1: str, file_path2: str) -> str:
     # read file1
-    with open(file_path1) as file1:
-        data1 = json.load(file1)
+    data1 = parse(file_path1)
 
     # read file2
-    with open(file_path2) as file2:
-        data2 = json.load(file2)
+    data2 = parse(file_path2)
 
     # collect sorted keys
     keys = sorted(set(data1.keys()) | set(data2.keys()))
@@ -24,7 +22,7 @@ def generate_diff(file_path1: str, file_path2: str) -> str:
             result_lines.append(f"  - {key}: {data1[key]}")
             continue
 
-        # key is only in file2 (add in file2)
+        # key is only in file2 (added in file2)
         if not in_first and in_second:
             result_lines.append(f"  + {key}: {data2[key]}")
             continue

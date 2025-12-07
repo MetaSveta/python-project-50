@@ -8,8 +8,9 @@ authors = [
     {name = "MetaSveta", email = "mlasouls@gmail.com"},
 ]
 
-# Пока зависимостей нет, позже добавится pyyaml, json и т.д.
-dependencies = []
+dependencies = [
+    "pyyaml>=6.0",
+]
 
 [project.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
