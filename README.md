@@ -9,4 +9,4 @@
 
 ### Demonstrations
 
-[![asciicast](https://asciinema.org/a/imeRpAFdfdAcM3QcusQExr1Vz.svg)](https://asciinema.org/a/imeRpAFdfdAcM3QcusQExr1Vz)
+[![asciicast](https://asciinema.org/a/CKwNh3QSMtvILU6MiL5tyFxkk.svg)](https://asciinema.org/a/CKwNh3QSMtvILU6MiL5tyFxkk)
