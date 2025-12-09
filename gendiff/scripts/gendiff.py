@@ -21,7 +21,11 @@ def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
 
-    diff = generate_diff(args.first_file, args.second_file)
+    diff = generate_diff(
+        args.first_file,
+        args.second_file,
+        format_name=args.format or "stylish",
+    )
     print(diff)
 
 

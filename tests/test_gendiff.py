@@ -13,7 +13,7 @@ def get_fixture_path(filename: str) -> Path:
 
 def read_fixture(filename: str) -> str:
     path = get_fixture_path(filename)
-    return path.read_text(encoding="utf-8").strip()
+    return path.read_text(encoding="utf-8").rstrip("\n")
 
 
 @pytest.mark.parametrize(
@@ -27,6 +27,17 @@ def test_generate_diff_flat(file1_name: str, file2_name: str) -> None:
     file1 = get_fixture_path(file1_name)
     file2 = get_fixture_path(file2_name)
     expected = read_fixture("expected_flat.txt")
+
+    result = generate_diff(str(file1), str(file2))
+
+    assert result == expected
+
+
+def test_generate_diff_nested_stylish_json() -> None:
+    """Checking the correct comparison of nested JSON structures in "stylish" format."""
+    file1 = get_fixture_path("file1_nested.json")
+    file2 = get_fixture_path("file2_nested.json")
+    expected = read_fixture("expected_nested_stylish.txt")
 
     result = generate_diff(str(file1), str(file2))
 
