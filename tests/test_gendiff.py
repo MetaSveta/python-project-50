@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import pytest
@@ -69,3 +70,23 @@ def test_generate_diff_nested_plain(file1_name: str, file2_name: str) -> None:
     result = generate_diff(str(file1), str(file2), "plain")
 
     assert result == expected
+
+    @pytest.mark.parametrize(
+        ("file1_name", "file2_name"),
+        [
+            ("file1_nested.json", "file2_nested.json"),
+            ("file1_nested.yml", "file2_nested.yml"),
+        ],
+    )
+    def test_generate_diff_json(file1_name: str, file2_name: str) -> None:
+        """Checking 'json' format for nested JSON/YAML structures."""
+        file1 = get_fixture_path(file1_name)
+        file2 = get_fixture_path(file2_name)
+
+        result = generate_diff(str(file1), str(file2), "json")
+        actual = json.loads(result)
+
+        expected_raw = read_fixture("expected_nested_json.json")
+        expected = json.loads(expected_raw)
+
+        assert actual == expected
