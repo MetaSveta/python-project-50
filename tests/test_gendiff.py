@@ -33,12 +33,39 @@ def test_generate_diff_flat(file1_name: str, file2_name: str) -> None:
     assert result == expected
 
 
-def test_generate_diff_nested_stylish_json() -> None:
-    """Checking the correct comparison of nested JSON structures in "stylish" format."""
-    file1 = get_fixture_path("file1_nested.json")
-    file2 = get_fixture_path("file2_nested.json")
+@pytest.mark.parametrize(
+    ("file1_name", "file2_name"),
+    [
+        ("file1_nested.json", "file2_nested.json"),
+        ("file1_nested.yml", "file2_nested.yml"),
+    ],
+)
+def test_generate_diff_nested_stylish(file1_name: str, file2_name: str) -> None:
+    """Checking the correct comparison of nested JSON/YAML structures
+    in 'stylish' format."""
+    file1 = get_fixture_path(file1_name)
+    file2 = get_fixture_path(file2_name)
     expected = read_fixture("expected_nested_stylish.txt")
 
     result = generate_diff(str(file1), str(file2))
+
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    ("file1_name", "file2_name"),
+    [
+        ("file1_nested.json", "file2_nested.json"),
+        ("file1_nested.yml", "file2_nested.yml"),
+    ],
+)
+def test_generate_diff_nested_plain(file1_name: str, file2_name: str) -> None:
+    """Checking the correct comparison of nested JSON/YAML structures
+    in 'plain' format."""
+    file1 = get_fixture_path(file1_name)
+    file2 = get_fixture_path(file2_name)
+    expected = read_fixture("expected_nested_plain.txt")
+
+    result = generate_diff(str(file1), str(file2), "plain")
 
     assert result == expected
