@@ -30,7 +30,7 @@ def _to_str(value: Any, depth: int) -> str:
 
 
 def format_stylish(tree: DiffTree, depth: int = 1) -> str:
-    """Formats the internal diff tree into a string in the 'stylish' style'."""
+    """'stylish' formatter: returns the diff tree as a string in the 'stylish' style."""
     lines: list[str] = ["{"]
 
     for node in tree:
