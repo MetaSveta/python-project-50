@@ -73,6 +73,7 @@ def _walk(tree: DiffTree, path_prefix: str = "") -> list[str]:
 
 
 def format_plain(tree: DiffTree) -> str:
-    """'plain' formatter: returns the diff tree as a string in the 'plain' style."""
+    """'plain' formatter: returns the diff tree as a string in the 'plain'
+    style."""
     lines = _walk(tree)
     return "\n".join(lines)

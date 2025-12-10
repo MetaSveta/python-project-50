@@ -14,7 +14,8 @@ def build_diff(data1: dict[str, Any], data2: dict[str, Any]) -> DiffTree:
         "removed"  — a key is only in the first dictionary
         "unchanged"— values are the same in both dictionaries
         "updated"  — a value has changed
-        "nested"   — values in both dictionaries are dictionaries, there are "children"
+        "nested"   — values in both dictionaries are dictionaries,
+        there are "children"
     Additionally, the following fields are used:
     - value      — a value for "added"/"removed"/"unchanged"
     - old_value  — an old value for "updated"
