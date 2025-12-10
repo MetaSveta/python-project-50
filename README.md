@@ -7,6 +7,6 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MetaSveta_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=MetaSveta_python-project-50)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MetaSveta_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=MetaSveta_python-project-50)
 
-### Demonstrations
+### Demonstration
 
-[![asciicast](https://asciinema.org/a/CKwNh3QSMtvILU6MiL5tyFxkk.svg)](https://asciinema.org/a/CKwNh3QSMtvILU6MiL5tyFxkk)
+[![asciicast](https://asciinema.org/a/92fYQuFf1INMI8CFqAbOxXyze.svg)](https://asciinema.org/a/92fYQuFf1INMI8CFqAbOxXyze)
