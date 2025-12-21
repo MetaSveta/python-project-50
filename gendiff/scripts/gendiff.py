@@ -1,32 +1,24 @@
-import argparse
+import sys
 
 from gendiff import generate_diff
-
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Compares two configuration files and shows a difference.",
-    )
-    parser.add_argument("first_file")
-    parser.add_argument("second_file")
-    parser.add_argument(
-        "-f",
-        "--format",
-        help="set format of output",
-    )
-    return parser
+from gendiff.cli_parser import build_parser
+from gendiff.exceptions import GendiffError
 
 
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
 
-    diff = generate_diff(
-        args.first_file,
-        args.second_file,
-        format_name=args.format or "stylish",
-    )
-    print(diff)
+    try:
+        diff = generate_diff(
+            args.first_file,
+            args.second_file,
+            format_name=args.format,
+        )
+        print(diff)
+    except GendiffError as error:
+        print(f"Error: {error}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
