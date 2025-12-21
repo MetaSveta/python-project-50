@@ -30,9 +30,7 @@ def _walk(tree: DiffTree, path_prefix: str = "") -> list[str]:
 
         # build a path
         property_path = (
-            f"{path_prefix}{key}"
-            if not path_prefix
-            else f"{path_prefix}.{key}"
+            f"{path_prefix}{key}" if not path_prefix else f"{path_prefix}.{key}"
         )
 
         if node_type == "nested":
