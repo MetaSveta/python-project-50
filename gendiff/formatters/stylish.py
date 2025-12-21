@@ -3,6 +3,12 @@ from typing import Any
 from gendiff.diff_tree import DiffTree
 
 INDENT_SIZE = 4
+MARKER_WIDTH = 2  # "+ " / "- " / "  "
+
+
+def _indent_for_node(depth: int) -> str:
+    """Indent for diff nodes (+/-/space markers)."""
+    return " " * max(depth * INDENT_SIZE - MARKER_WIDTH, 0)
 
 
 def _to_str(value: Any, depth: int) -> str:
@@ -37,7 +43,7 @@ def format_stylish(tree: DiffTree, depth: int = 1) -> str:
     for node in tree:
         key = node["key"]
         node_type = node["type"]
-        indent = " " * (depth * INDENT_SIZE - 2)
+        indent = _indent_for_node(depth)
 
         if node_type == "added":
             lines.append(f"{indent}+ {key}: {_to_str(node['value'], depth)}")
@@ -47,10 +53,10 @@ def format_stylish(tree: DiffTree, depth: int = 1) -> str:
             lines.append(f"{indent}  {key}: {_to_str(node['value'], depth)}")
         elif node_type == "updated":
             lines.append(
-                f"{indent}- {key}: {_to_str(node['old_value'], depth)}",
+                f"{indent}- {key}: {_to_str(node['old_value'], depth)}"
             )
             lines.append(
-                f"{indent}+ {key}: {_to_str(node['new_value'], depth)}",
+                f"{indent}+ {key}: {_to_str(node['new_value'], depth)}"
             )
         elif node_type == "nested":
             children = node["children"]
