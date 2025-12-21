@@ -1,6 +1,6 @@
 from .diff_tree import build_diff
 from .formatters import get_formatter
-from .parsers import parse
+from .parsers import parse_file
 
 
 def generate_diff(
@@ -15,8 +15,8 @@ def generate_diff(
     - build an internal diff tree (build_diff);
     - format the tree with the selected formatter ('stylish' by default).
     """
-    data1 = parse(file_path1)
-    data2 = parse(file_path2)
+    data1 = parse_file(file_path1)
+    data2 = parse_file(file_path2)
 
     diff_tree = build_diff(data1, data2)
     formatter = get_formatter(format_name)
