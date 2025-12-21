@@ -33,10 +33,10 @@ def build_diff(data1: dict[str, Any], data2: dict[str, Any]) -> DiffTree:
 
         # Both values are dictionaries → build a nested tree
         both_dicts = (
-                in_first
-                and in_second
-                and isinstance(value1, dict)
-                and isinstance(value2, dict)
+            in_first
+            and in_second
+            and isinstance(value1, dict)
+            and isinstance(value2, dict)
         )
 
         if both_dicts:
